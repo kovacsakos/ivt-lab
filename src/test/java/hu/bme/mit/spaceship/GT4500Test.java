@@ -270,31 +270,4 @@ public class GT4500Test {
     assertEquals(false, result);
   }
 
-  @Test
-  public void fireTorpedo_UnknownEnumValue() {
-    // Arrange
-    FiringMode fmode = mock(FiringMode.class);
-    when(fmode.ordinal()).thenReturn(5);
-    
-    when(mockPrimaryTorpedoStore.isEmpty()).thenReturn(false);
-    when(mockPrimaryTorpedoStore.fire(1)).thenReturn(true);
-
-    when(mockSecondaryTorpedoStore.isEmpty()).thenReturn(false);
-    when(mockSecondaryTorpedoStore.fire(1)).thenReturn(true);
-
-    // Act
-    boolean result = ship.fireTorpedo(fmode);
-
-    // Assert
-    verify(mockPrimaryTorpedoStore, times(1)).isEmpty();
-    verify(mockPrimaryTorpedoStore, times(1)).fire(1);
-
-    verify(mockSecondaryTorpedoStore, times(1)).isEmpty();
-    verify(mockSecondaryTorpedoStore, times(1)).fire(1);
-    assertEquals(false, result);
-  }
-
-
-
-
 }
