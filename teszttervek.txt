@@ -1,0 +1,39 @@
+firingMode.SINGLE
+	1. primaryStore is empty, secondaryStore successful
+		verify: 
+		1x primaryStore.isEmpty()
+		0x primaryStore.fire(1)
+		1x secondaryStore.isEmpty()
+		1x secondaryStore.fire(1)
+
+	2. primaryStore reports failure
+		verify: 
+		1x primaryStore.isEmpty()
+		1x primaryStore.fire(1)
+		0x secondaryStore.isEmpty()
+		0x secondaryStore.fire(1)
+
+
+firingMode.ALL
+	3. both empty
+		verify: 
+		1x primaryStore.isEmpty()
+		0x primaryStore.fire(1)
+		1x secondaryStore.isEmpty()
+		0x secondaryStore.fire(1)
+
+
+	4. only first successfully fired
+		verify: 
+		1x primaryStore.isEmpty()
+		1x primaryStore.fire(1)
+		1x secondaryStore.isEmpty()
+		1x secondaryStore.fire(1)
+
+
+	5. only second successfully fired
+		verify: 
+		1x primaryStore.isEmpty()
+		1x primaryStore.fire(1)
+		1x secondaryStore.isEmpty()
+		1x secondaryStore.fire(1)
